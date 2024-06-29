@@ -1,10 +1,9 @@
 <script setup>
 const route = useRoute();
 const { toTitleCase } = useUtilities();
-
 useHead({
   title: `${
-    route.params.make ? toTitelCase(route.params.make) : "Cars"
+    route.params.make ? toTitleCase(route.params.make) : "Cars"
   } in ${toTitleCase(route.params.city)}`,
 });
 
@@ -12,6 +11,7 @@ definePageMeta({
   layout: "custom",
 });
 </script>
+
 <template>
   <div>
     <div class="mt-32 flex">
@@ -25,10 +25,10 @@ definePageMeta({
             </h1>
             <code>{{ error }}</code>
             <button
-              class="tex-white bg-blue-400 px-10 px-3 mt-4"
+              class="text-white bg-blue-400 px-10 py-3 rounded mt-4"
               @click="error.value = null"
             >
-              Go back
+              Go Back
             </button>
           </div>
         </template>
@@ -36,3 +36,4 @@ definePageMeta({
     </div>
   </div>
 </template>
+  

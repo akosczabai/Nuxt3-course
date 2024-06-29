@@ -1,6 +1,7 @@
 <script setup>
 const city = ref("");
 const cityError = ref(false);
+
 const handleSearch = () => {
   if (!city.value) {
     return (cityError.value = true);
@@ -11,7 +12,18 @@ const handleSearch = () => {
 
 <template>
   <div
-    class="font-serif w-[1000px] text-2xl rounded-full bg-white flex justify-between overflow-hidden drop-shadow-2xl ms-auto"
+    class="
+      font-serif
+      w-[1000px]
+      text-2xl
+      rounded-full
+      bg-white
+      flex
+      justify-between
+      overflow-hidden
+      drop-shadow-2xl
+      mx-auto
+    "
   >
     <input
       type="text"

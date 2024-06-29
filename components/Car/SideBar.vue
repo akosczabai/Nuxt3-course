@@ -5,7 +5,7 @@ const modal = ref({
   location: false,
   price: false,
 });
-const city = ref();
+const city = ref("");
 const priceRange = ref({
   min: "",
   max: "",
@@ -23,7 +23,7 @@ const priceRangeText = computed(() => {
   } else if (minPrice && !maxPrice) {
     return `> $${minPrice}`;
   } else {
-    return `$${minPrice} - $${maxPrice}`;
+    return `$${minPrice}-$${maxPrice}`;
   }
 });
 
@@ -39,7 +39,7 @@ const onChangeLocation = () => {
       message: "Invalid city format",
     });
   }
-  updateModal(location);
+  updateModal("location");
   navigateTo(`/city/${city.value}/car/${route.params.make}`);
   city.value = "";
 };
@@ -65,7 +65,7 @@ const onChangePrice = () => {
 
 <template>
   <div class="shadow border w-64 mr-10 z-30 h-[190px]">
-    <!--  LOCATION STARTS -->
+    <!-- LOCATION START -->
     <div class="p-5 flex justify-between relative cursor-pointer border-b">
       <h3>Location</h3>
       <h3 @click="updateModal('location')" class="text-blue-400 capitalize">
@@ -73,7 +73,7 @@ const onChangePrice = () => {
       </h3>
       <div
         v-if="modal.location"
-        class="absolute border shdaow left-56 p-5 top-1 -m-1 bg-white"
+        class="absolute border shadow left-56 p-5 top-1 -m-1 bg-white"
       >
         <input type="text" class="border p-1 rounded" v-model="city" />
         <button
@@ -84,16 +84,29 @@ const onChangePrice = () => {
         </button>
       </div>
     </div>
-    <!--  LOCATION end -->
+    <!-- LOCATION END -->
 
-    <!--  MAKE START -->
+    <!-- MAKE START -->
     <div class="p-5 flex justify-between relative cursor-pointer border-b">
       <h3>Make</h3>
       <h3 class="text-blue-400 capitalize" @click="updateModal('make')">
         {{ route.params.make || "Any" }}
       </h3>
       <div
-        class="absolute border shadow left-56 p-5 top-1 -m-1 w-[600px] flex justify-between flex-wrap bg-white"
+        class="
+          absolute
+          border
+          shadow
+          left-56
+          p-5
+          top-1
+          -m-1
+          w-[600px]
+          flex
+          justify-between
+          flex-wrap
+          bg-white
+        "
         v-if="modal.make"
       >
         <h4
@@ -106,7 +119,7 @@ const onChangePrice = () => {
         </h4>
       </div>
     </div>
-    <!--  MAKE ENDS -->
+    <!-- MAKE END -->
 
     <!-- PRICE START -->
     <div class="p-5 flex justify-between relative cursor-pointer border-b">
@@ -115,7 +128,7 @@ const onChangePrice = () => {
         {{ priceRangeText }}
       </h3>
       <div
-        class="absolute border shadow left-56 p-5 top-1 -m-1 bg-white"
+        class="absolute border sahow left-56 p-5 top-1 -m-1 bg-white"
         v-if="modal.price"
       >
         <input
@@ -141,3 +154,6 @@ const onChangePrice = () => {
     <!-- PRICE END -->
   </div>
 </template>
+
+
+

@@ -1,14 +1,14 @@
 <script setup>
 const { cars } = useCars();
 
-const favourite = useLocalStorage("favourite", {});
+const favorite = useLocalStorage("favorite", {});
 
-const handleFavourite = (id) => {
-  if (id in favourite.value) {
-    delete favourite.value[id];
+const handleFavorite = (id) => {
+  if (id in favorite.value) {
+    delete favorite.value[id];
   } else {
-    favourite.value = {
-      ...favourite.value,
+    favorite.value = {
+      ...favorite.value,
       [id]: true,
     };
   }
@@ -17,14 +17,12 @@ const handleFavourite = (id) => {
 
 <template>
   <div class="w-full">
-   
-      <CarCard
-        v-for="car in cars"
-        :key="car.id"
-        :car="car"
-        @favor="handleFavourite"
-        :favored="car.id in favourite"
-      />
-
+    <CarCard
+      v-for="car in cars"
+      :key="car.id"
+      :car="car"
+      @favor="handleFavorite"
+      :favored="car.id in favorite"
+    />
   </div>
 </template>
